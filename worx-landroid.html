@@ -1,0 +1,86 @@
+<script type="text/javascript">
+    RED.nodes.registerType('worx-landroid',{
+        category: 'IoT',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            account: {value:"", type:"worx-account"},
+            server: {value:"worx"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "bridge.svg",
+        color: "#3FADB5",
+        label: function() {
+            return this.name || this.server.substring(0,1).toUpperCase() + this.server.substring(1) + " Mower";
+        },
+        paletteLabel: "Worx Mower",
+        inputLabels: "command",
+        outputLabels: ["message"],
+        oneditprepare: function(){
+            $("#node-input-server").typedInput({
+                types: [
+                    {
+                        value: "worx",
+                        options: [
+                            { value: "worx", label: "Worx" },
+                            { value: "kress", label: "Kress" },
+                            { value: "landxcape", label: "Landxcape" },
+                            { value: "ferrex", label: "Ferrex" }
+                        ]
+                    }
+                ]
+            })
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="worx-landroid">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-account"><i class="fa fa-user"></i> Account</label>
+        <input type="text" id="node-input-account" placeholder="Account">
+    </div>
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-list"></i> Type</label>
+        <input type="text" id="node-input-server" placeholder="Type">
+    </div>
+</script>
+
+<script type="text/markdown" data-help-name="worx-landroid">
+A node to connect to your worx landroid mower
+
+### Input
+: payload (string | object) :  the command to send to the mower
+: *topic* (string)          :  the serial number of the mower to send the command.
+
+### Output
+: payload (string) : the output is receiving the status message of the mower.
+
+### Details
+`msg.payload` is the command to send to the mower.
+
+If it contains an Object the follwoing format is required:
+
+`{
+    serial_number: "<the mower serial number>", 
+    cmd: "<the command to send to the mower>"
+}`
+
+If it is a string you provide a command.
+
+The follwoing commands can be used:
+- start = start mowing
+- pause = pause mowing
+- stop = stop mowing and return to home
+- status = refresh the status of the mower
+
+`msg.topic`
+can contains the serial number of mower to send the command to.
+
+If no serial number is provided in the payload or 
+in the topic the command is sent to all mowers registered in the account
+</script>

@@ -1,0 +1,142 @@
+[
+    {
+        "id": "bdb7fc22a50d5f8f",
+        "type": "tab",
+        "label": "Worx example flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2dbcce53d7718ae2",
+        "type": "debug",
+        "z": "bdb7fc22a50d5f8f",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2bbbd680b38a7ed4",
+        "type": "inject",
+        "z": "bdb7fc22a50d5f8f",
+        "name": "Request status",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "status",
+        "payloadType": "str",
+        "x": 200,
+        "y": 60,
+        "wires": [
+            [
+                "4aee4cfbe7f673c4"
+            ]
+        ]
+    },
+    {
+        "id": "2b481a2af213c440",
+        "type": "inject",
+        "z": "bdb7fc22a50d5f8f",
+        "name": "Pause mowing",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "pause",
+        "payloadType": "str",
+        "x": 200,
+        "y": 140,
+        "wires": [
+            [
+                "4aee4cfbe7f673c4"
+            ]
+        ]
+    },
+    {
+        "id": "7dfd066b2e1d3d25",
+        "type": "inject",
+        "z": "bdb7fc22a50d5f8f",
+        "name": "Start mowing",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "start",
+        "payloadType": "str",
+        "x": 210,
+        "y": 100,
+        "wires": [
+            [
+                "4aee4cfbe7f673c4"
+            ]
+        ]
+    },
+    {
+        "id": "4aee4cfbe7f673c4",
+        "type": "worx-landroid",
+        "z": "bdb7fc22a50d5f8f",
+        "name": "",
+        "account": "",
+        "server": "worx",
+        "x": 430,
+        "y": 120,
+        "wires": [
+            [
+                "2dbcce53d7718ae2"
+            ]
+        ]
+    },
+    {
+        "id": "3e904489843d36cb",
+        "type": "inject",
+        "z": "bdb7fc22a50d5f8f",
+        "name": "Stop mowing",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "stop",
+        "payloadType": "str",
+        "x": 210,
+        "y": 180,
+        "wires": [
+            [
+                "4aee4cfbe7f673c4"
+            ]
+        ]
+    }
+]
