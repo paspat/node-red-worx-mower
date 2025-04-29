@@ -1,6 +1,6 @@
 {
     "name" : "@paspat/node-red-worx-mower",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A node to see status messages and send commands to IoT mowers in node-red",
     "license": "MIT",
     "repository": {
