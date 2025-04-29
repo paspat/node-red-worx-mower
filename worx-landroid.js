@@ -98,7 +98,7 @@ module.exports = function(RED) {
                         node.log(msg);
                     },
                     warn: function(msg){
-                        nod.warn(msg);
+                        node.warn(msg);
                     }
                 }
             });
