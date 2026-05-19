@@ -260,7 +260,10 @@ class WorxCloud extends EventEmitter {
                 return;
             }
 
-            this.userData = await this.apiRequest("users/me", false);
+            this.userData = {
+              id: this.deviceArray[0].user_id,
+              mqtt_endpoint: ''
+            };
             this.connectMqtt();
         }
         
